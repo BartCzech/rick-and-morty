@@ -9,7 +9,6 @@ export async function fetchCharactersPages(query: string) {
     const res = await fetch(defaultEndpoint + `?name=${query}`);
     const data = await res.json();
     const totalPages = Number(data.info.pages) * 2 - 1;
-    console.log("Total pages: ", totalPages);
     return totalPages;
   } catch (error) {
     console.error("Failed to fetch characters:", error);
@@ -24,17 +23,11 @@ export async function fetchFilteredCharacters(
   noStore();
 
   try {
-    console.log(query);
     const page = Math.ceil(currentPage / 2);
-    console.log("currentPage: " + currentPage);
-    console.log("page: " + page);
-    // const res = await fetch(defaultEndpoint + `?page=${currentPage}`);
     const res = await fetch(
       defaultEndpoint + `?page=${page}&name=${query}`
     );
     const data = await res.json();
-    // const totalPages = Number(data.info.pages);
-    // console.log(data);
     return data.results;
   } catch (error) {
     console.error("Failed to fetch filtered characters:", error);
@@ -46,11 +39,8 @@ export async function fetchSpecificCharacter(id: string) {
   noStore();
 
   try {
-    console.log("ID: " + id);
-
     const res = await fetch(`${defaultEndpoint}/${id}`);
     const data = await res.json();
-    console.log(data);
     return {
       id: data.id,
       name: data.name,
