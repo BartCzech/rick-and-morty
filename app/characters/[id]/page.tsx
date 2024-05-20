@@ -1,19 +1,18 @@
-import { use } from 'react';
 import { fetchSpecificCharacter } from '@/app/lib/data';
-
-interface CharacterData {
-  name: string;
-  image: string;
-  gender: string;
-  location: {
-    name: string;
-  };
-  origin: {
-    name: string;
-  };
-  species: string;
-  status: string;
-}
+import { CharacterData } from '@/app/lib/definitions';
+// interface CharacterData {
+//   name: string;
+//   image: string;
+//   gender: string;
+//   location: {
+//     name: string;
+//   };
+//   origin: {
+//     name: string;
+//   };
+//   species: string;
+//   status: string;
+// }
 
 const fetchCharacter = async (id: string): Promise<CharacterData> => {
   const data = await fetchSpecificCharacter(id);

@@ -52,6 +52,7 @@ export async function fetchSpecificCharacter(id: string) {
     const data = await res.json();
     console.log(data);
     return {
+      id: data.id,
       name: data.name,
       image: data.image,
       gender: data.gender,
